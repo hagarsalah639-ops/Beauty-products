@@ -7,7 +7,7 @@ with st.form("signin_form"):
     email = st.text_input("E-mail")
     st.write("Your Password")
     password = st.text_input("Password", type="password")
-    submitted = st.form_submit_button("Sign In", use_container_width=True)
+    submit = st.form_submit_button("Sign In", use_container_width=True)
     if submit:
         if email and password:
             st.session_state['email'] = email
