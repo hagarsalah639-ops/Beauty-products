@@ -14,7 +14,7 @@ with st.form("signin_form"):
             st.session_state['password'] = password
             st.success("Logged in successfully! Welcome back.")
             sleep(3)
-            st.switch_page("Pages/products.py")
+           
         else:
             st.error("Please enter both email and password.")
 st.divider()
