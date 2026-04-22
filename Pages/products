@@ -1,0 +1,89 @@
+import streamlit as st
+# Define the products and their prices
+Lips = { 
+    "Lip stick": {'Red':400,
+                  'cherry':350,
+                  'Peach': 450},
+    "Lip palm": {'Red':450,
+                  'cherry':450,
+                  'Peach':550},
+                
+    "Lip gloss": {'Nude':400,
+                  'brown':350,
+                  'Clear':250}}
+Face = { 
+    "Foundation": {'Light':400,
+                    'medium':350,
+                    'dark':450},
+    "Concealer": {'Light':400,
+                    'medium':350,
+                    'dark':450}
+                }
+Eyes = { 
+    "Mascara": {'Essence':400,
+                    'mac':350,
+                    'Anastasia':450},
+    "Eye shadow": {'Nars pallet':400,
+                    'Huda beauty':350,
+                    'Anastasia':450}
+                }
+# Check if the user is logged in
+#if st.session_state['logged in']:
+ #   st.warn("Please log in to view our products.")
+
+#else:
+# Welcome message
+st.title("Welcome to our makeup store! 💄", text_alignment="center")
+# Display the products and their prices
+Lips_tab, Face_tab, Eyes_tab = st.tabs(['Lips💋' , 'Face👩‍🦰', 'Eyes 👁️'])
+with Lips_tab:
+    st.subheader("Lips Products")
+    col1, col2, col3 = st.columns(3)
+    stick_shades = list(Lips["Lip stick"].keys())
+    lippalm_shades = list(Lips["Lip palm"].keys())
+    lipgloss_shades = list(Lips["Lip gloss"].keys())
+    with col1:
+       st.image("Images/Redlipstick.png",width=190)
+       st.subheader("Lip stick", 
+                    text_alignment="center")
+       lipstick_shade = st.segmented_control('stickShades:',default='Red', options=stick_shades,)
+    with col2:
+       st.image("Images/palm.png",width=190)
+       st.subheader("Lip palm", 
+                    text_alignment="center")
+       lippalm_shades = st.segmented_control('palmShades:',default='Red', options=lippalm_shades,)
+    with col3:
+       st.image("Images/gloss.png",width=190)
+       st.subheader("Lip gloss", 
+                    text_alignment="center")
+       lipgloss_shades = st.segmented_control('glossShades:',default='Clear', options=lipgloss_shades,)
+with Face_tab:
+    st.subheader("Face Products")
+    col1, col2 = st.columns(2)
+    foundation_shades = list(Face["Foundation"].keys())
+    concealer_shades = list(Face["Concealer"].keys())
+    with col1:
+       st.image("Images/foundation.png",width=200)
+       st.subheader("Foundation", 
+                    text_alignment="center")
+       foundation_shade = st.segmented_control('foundationShades:',default='Light', options=foundation_shades,)
+    with col2:
+       st.image("Images/concealer.png",width=80)
+       st.subheader("Concealer", 
+                    text_alignment="center")
+       concealer_shade = st.segmented_control('concealerShades:',default='Light', options=concealer_shades,)
+with Eyes_tab:
+    st.subheader("Eyes Products")
+    col1, col2 = st.columns(2)
+    mascara_type = list(Eyes["Mascara"].keys())
+    eyeshadow_type = list(Eyes["Eye shadow"].keys())
+    with col1:
+       st.image("Images/mascara.png",width=150)
+       st.subheader("Mascara", 
+                    text_alignment="center")
+       mascara_type = st.segmented_control('mascaraShades:',default='Essence', options=mascara_type,)
+    with col2:
+       st.image("Images/eyeshadow.png",width=250)
+       st.subheader("Eye shadow", 
+                    text_alignment="center")
+       eyeshadow_type = st.segmented_control('eyeshadowShades:',default='Nars pallet', options=eyeshadow_type,)
